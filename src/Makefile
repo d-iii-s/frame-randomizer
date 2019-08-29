@@ -13,7 +13,7 @@ BIN = ../bin
 
 # Files
 
-ALL_EX = $(BIN)/frame-randomizer
+ALL_EX = $(BIN)/frame-randomizer $(BIN)/frame-timer
 ALL_OO = $(addsuffix .o, $(ALL_EX))
 ALL_DD = $(addsuffix .dep, $(ALL_EX))
 
@@ -27,6 +27,9 @@ clean:
 	rm -f $(ALL_EX)
 
 $(BIN)/frame-randomizer: frame-randomizer.o
+	$(LD) $(LD_OPTS) -o $@ $^
+
+$(BIN)/frame-timer: frame-timer.o
 	$(LD) $(LD_OPTS) -o $@ $^
 
 %.o: %.c
